@@ -21,10 +21,10 @@ public:
 	{}
 
 	// Array with values.
-	MarkSpaceArray(std::initializer_list<unsigned int> iList) : _data(iList)
+	MarkSpaceArray(std::initializer_list<uint16_t> iList) : _data(iList)
 	{}
 
-	MarkSpaceArray& operator=(std::initializer_list<unsigned int> iList)
+	MarkSpaceArray& operator=(std::initializer_list<uint16_t> iList)
 	{	
 		_data.assign(iList);
 		return (*this);
@@ -80,24 +80,24 @@ public:
 	}
 
 	// Array containing timing for marks and spaces, starts with marks.
-	const std::vector<unsigned int> data() const
+	const std::vector<uint16_t> data() const
 	{
 		return _data;
 	}
 
-	unsigned int* rawData()
+	uint16_t* rawData()
 	{
 		return _data.data();
 	}
 
-	unsigned int size() const
+	uint16_t size() const
 	{
 		return _data.size();
 	}
 
 private:
 
-	std::vector<unsigned int> _data;
+	std::vector<uint16_t> _data;
 
 	// Add more usec to the current state. For example, if the array
 	// looks like this: { 1000, 1000 } (equal to calling addMark(1000)
@@ -264,7 +264,7 @@ public:
 
 class OrangeElectraRemote : public ElectraRemote
 {
-	static const unsigned int baseUnitTime = 992;
+	static const uint16_t baseUnitTime = 992;
 	static const uint8_t numBits = 34;
 
 	std::map<IRElectraMode, uint8_t> _remoteModes = {
@@ -352,7 +352,7 @@ public:
 
 class GreenElectraRemote : public ElectraRemote
 {
-	static const unsigned int baseUnitTime = 560;
+	static const uint16_t baseUnitTime = 560;
 	static const uint8_t numBits = 104;
 
 	std::map<IRElectraMode, uint8_t> _remoteModes = {
@@ -476,7 +476,7 @@ public:
 		code.button = 0b101;
 
 		int sum = 0;
-		for (unsigned int i = 0; i < sizeof(code.buffer); ++i)
+		for (uint16_t i = 0; i < sizeof(code.buffer); ++i)
 		{
 			sum += code.buffer[i];
 			code.buffer[i] = reverseByte(code.buffer[i]);

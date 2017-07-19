@@ -1,5 +1,7 @@
 # IRelectra - Electra A/C IR library for IRremote
 
+## This is forked from https://github.com/barakwei/IRelectra/tree/version-2.0 and adapted to work on ESP8266
+
 ### Overview
 The project can be used to control Electra A/C that are common is Israel, using any dev board that supports IRremote.<br>
 It doesn't has all the features that exist in the original remote, but only a subset:<br>
