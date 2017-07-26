@@ -508,10 +508,10 @@ void IRelectra::send(bool power, IRElectraMode mode, IRElectraFan fan, int tempe
 }
 
 
-ElectraRemote greenRemote() {
+&ElectraRemote greenRemote() {
     return green;
 }
 
-ElectraRemote orangeRemote() {
+&ElectraRemote orangeRemote() {
     return orange;
 }
