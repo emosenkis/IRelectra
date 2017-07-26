@@ -498,22 +498,22 @@ void IRelectra::sendUsingRemote(ElectraRemote & remote, bool power, IRElectraMod
 }
 
 void IRelectra::send(bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep) {
-    this->send(IRElectraRemoteTypeOrangeThenGreen, power, mode, fan, temperature, swing, sleep);
+	this->send(IRElectraRemoteTypeOrangeThenGreen, power, mode, fan, temperature, swing, sleep);
 }
 
 void IRelectra::send(IRElectraRemoteType type, bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep)
 {
-    switch(type) {
-        case IRElectraRemoteTypeOrange:
-        case IRElectraRemoteTypeOrangeThenGreen:
-	        OrangeElectraRemote orange;
-            sendUsingRemote(orange, power, mode, fan, temperature, swing, sleep);
-            if (type != IRElectraRemoteTypeOrangeThenGreen) {
-                break;
-            }
-            delay(2000);
-        case IRElectraRemoteTypeGreen:
-            GreenElectraRemote green;
-            sendUsingRemote(green, power, mode, fan, temperature, swing, sleep);
-    }
+	OrangeElectraRemote orange;
+	GreenElectraRemote green;
+	switch(type) {
+		case IRElectraRemoteTypeOrange:
+		case IRElectraRemoteTypeOrangeThenGreen:
+			sendUsingRemote(orange, power, mode, fan, temperature, swing, sleep);
+			if (type != IRElectraRemoteTypeOrangeThenGreen) {
+				break;
+			}
+			delay(2000);
+		case IRElectraRemoteTypeGreen:
+			sendUsingRemote(green, power, mode, fan, temperature, swing, sleep);
+	}
 }
