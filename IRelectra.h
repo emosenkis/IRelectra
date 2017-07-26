@@ -31,15 +31,17 @@ typedef enum IRElectraFan {
 } IRElectraFan;
 
 class ElectraRemote;
+class OrangeElectraRemote : public ElectraRemote;
+class GreenElectraRemote : public ElectraRemote;
 
 class IRelectra
 {
 public:
 	IRelectra(IRsend* remote);
 	void send(bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep);
+	void sendUsingRemote(ElectraRemote& remote, bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep);
 private:
 	IRsend* _remote;
-	void sendUsingRemote(ElectraRemote& remote, bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep);
 };
 
 #endif
