@@ -497,11 +497,21 @@ void IRelectra::sendUsingRemote(ElectraRemote & remote, bool power, IRElectraMod
 	_remote->sendRaw(packet.rawData(), packet.size(), remote.modulationFrequency());
 }
 
+OrangeElectraRemote orange;
+GreenElectraRemote green;
+
 void IRelectra::send(bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep)
 {
-	OrangeElectraRemote orange;
-	GreenElectraRemote green;
 	sendUsingRemote(orange, power, mode, fan, temperature, swing, sleep);
 	delay(2000);
 	sendUsingRemote(green, power, mode, fan, temperature, swing, sleep);
+}
+
+
+ElectraRemote greenRemote() {
+    return green;
+}
+
+ElectraRemote orangeRemote() {
+    return orange;
 }

@@ -31,8 +31,9 @@ typedef enum IRElectraFan {
 } IRElectraFan;
 
 class ElectraRemote;
-class OrangeElectraRemote : public ElectraRemote {};
-class GreenElectraRemote : public ElectraRemote {};
+
+ElectraRemote greenRemote();
+ElectraRemote orangeRemote();
 
 class IRelectra
 {
