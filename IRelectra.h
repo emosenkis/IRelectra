@@ -30,6 +30,12 @@ typedef enum IRElectraFan {
 	IRElectraFanAuto,
 } IRElectraFan;
 
+typedef enum IRElectraRemoteType {
+    IRElectraRemoteTypeOrange,
+    IRElectraRemoteTypeGreen,
+    IRElectraRemoteTypeOrangeThenGreen,
+} IRElectraRemoteType;
+
 class ElectraRemote;
 
 class IRelectra
@@ -37,6 +43,7 @@ class IRelectra
 public:
 	IRelectra(IRsend* remote);
 	void send(bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep);
+	void send(IRElectraRemoteType type, bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep);
 private:
 	IRsend* _remote;
 	void sendUsingRemote(ElectraRemote& remote, bool power, IRElectraMode mode, IRElectraFan fan, int temperature, bool swing, bool sleep);
